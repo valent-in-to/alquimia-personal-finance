@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
+import { Router } from '@angular/router';
 import { ConnectionService } from 'src/app/core/connection.service';
-import { Operation } from 'src/app/core/operation';
 
 @Component({
   selector: 'app-operation',
@@ -14,7 +14,8 @@ export class OperationComponent implements OnInit {
   amount;
   concept;
 
-  constructor( private connection: ConnectionService ) { }
+  constructor( private connection: ConnectionService,
+    private router: Router ) { }
 
   ngOnInit(): void {
   }
@@ -26,7 +27,8 @@ export class OperationComponent implements OnInit {
         'amount': this.amount,
         'concept': this.concept
       }
-      ).then(x => console.log(x), err => console.log(err))
+      ).then(() => this.router.navigate([]))
   }
+
 
 }

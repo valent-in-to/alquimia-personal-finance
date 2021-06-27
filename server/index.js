@@ -15,14 +15,12 @@ app.get('/operations' ,async (req, res)=> {
 })
 
 app.post('/operations' ,async (req, res)=> {
-    let created = await Operations.create(req.body);
-    console.log(req.body)
-    res.send(`operation ${created.id} succesfully created`)
+    await Operations.create(req.body)
+    .then(()=>res.status(200).send());
 })
 
 app.get('/operations/:id', async (req, res) => {
-    let operation = await Operations.findByPk(req.params.id);
-    res.send(operation);
+    res.status(200).send(await Operations.findByPk(req.params.id));
 })
 
 app.put('/operations/:id', async(req, res) => {
@@ -33,8 +31,8 @@ app.put('/operations/:id', async(req, res) => {
 })
 
 app.delete('/operations/:id', async (req, res) => {
-    let operation = await (await Operations.findByPk(req.params.id)).destroy()
-    res.send('deleted successfully')
+    (await Operations.findByPk(req.params.id)).destroy()
+    .then(()=> res.status(200).send())
 })
 
 

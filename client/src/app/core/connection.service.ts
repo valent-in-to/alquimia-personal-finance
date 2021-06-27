@@ -18,7 +18,7 @@ export class ConnectionService {
   }
 
   deleteOperation(id){
-    return this.http.delete(environment.api + '/operations/' + id).toPromise()
+    return this.http.delete(environment.api + '/operations/' + id)
   }
 }
 

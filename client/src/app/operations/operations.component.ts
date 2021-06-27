@@ -26,7 +26,7 @@ export class OperationsComponent implements OnInit {
   } */
 
   deleteOperation(id){
-    this.con.deleteOperation(id)
+    this.con.deleteOperation(id).subscribe(()=> this.getOperations(), err => console.log(err))
     this.getOperations()
   }
 }

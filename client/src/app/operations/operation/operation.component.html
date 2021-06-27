@@ -1,15 +1,17 @@
 <div class="container">
+    <h4>Add New Operation</h4>
     <form #operationForm="ngForm" (ngSubmit)="newOperation()">
         <!-- <pre>{{ operationForm.value | json }}</pre> -->
         <label for="type">Type:</label>
-        <select name="type" id="type" [(ngModel)]="this.type">
+        <select name="type" id="type" [(ngModel)]="this.type" required>
             <option value="0">Outcome</option>
             <option value="1">Income</option>
         </select>
         <label for="concept">Concept:</label>
-        <input type="text" name="concept" [(ngModel)]="this.concept">
+        <input type="text" name="concept" [(ngModel)]="this.concept" required>
         <label for="amount">Amount</label>
-        <input type="number" name="amount" [(ngModel)]="this.amount">
+        <input type="number" name="amount" [(ngModel)]="this.amount" required>
+        <button routerLink=''>GO BACK</button>
         <button class="button-primary">SUBMIT</button>
     </form>
 </div>
