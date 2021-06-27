@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { OperationsComponent } from './operations/operations.component';
 
 import { HttpClientModule } from "@angular/common/http";
+import { OperationComponent } from './operations/operation/operation.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     OperationsComponent,
+    OperationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

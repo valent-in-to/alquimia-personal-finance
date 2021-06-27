@@ -17,11 +17,16 @@ export class OperationsComponent implements OnInit {
   }
 
   getOperations(){
-    this.con.fetchOperations().then((data)=> {
+    this.con.fetchOperations().subscribe((data)=> {
       this.list = data;
     })
   }
   /* getBalance(){
     return this.list.
   } */
+
+  deleteOperation(id){
+    this.con.deleteOperation(id)
+    this.getOperations()
+  }
 }

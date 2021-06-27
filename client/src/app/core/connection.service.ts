@@ -10,6 +10,15 @@ export class ConnectionService {
   constructor(private http: HttpClient) { }
 
   fetchOperations(){
-    return this.http.get(environment.api + '/operations').toPromise()
+    return this.http.get<any>(environment.api + '/operations')
+  }
+
+  postNewOperation(data){
+    return this.http.post(environment.api + '/operations', data).toPromise()
+  }
+
+  deleteOperation(id){
+    return this.http.delete(environment.api + '/operations/' + id).toPromise()
   }
 }
+

@@ -6,15 +6,17 @@ database.sync().then(()=> console.log('db running...'));
 const Operations = require('./models/Operations');
 
 const app = express();
+app.use(cors())
 app.use(express.json());
 
-app.get('/operations', cors() ,async (req, res)=> {
+app.get('/operations' ,async (req, res)=> {
     let operations = await Operations.findAll();
     res.send(operations)
 })
 
-app.post('/operations', async (req, res)=> {
+app.post('/operations' ,async (req, res)=> {
     let created = await Operations.create(req.body);
+    console.log(req.body)
     res.send(`operation ${created.id} succesfully created`)
 })
 

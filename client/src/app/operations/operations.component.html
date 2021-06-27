@@ -11,7 +11,7 @@
                 <th>Concept</th>
                 <th>Date</th>
                 <th>Amount</th>
-                <th><button class="button-primary">New</button></th>
+                <th colspan="2"><button class="button-primary" routerLink="/new">NEW</button></th>
             </tr>
             </thead>
             <tbody>
@@ -20,7 +20,8 @@
                 <td> {{ operation.concept }} </td>
                 <td> {{ operation.createdAt | date }} </td>
                 <td> {{ operation.amount | currency }} </td>
-                <td><button>Edit</button></td>
+                <td><button>EDIT</button></td>
+                <td><button (click)="deleteOperation(operation.id)">DELETE</button></td>
             </tr>
             </tbody>
         </table>

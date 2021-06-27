@@ -1,0 +1,15 @@
+<div class="container">
+    <form #operationForm="ngForm" (ngSubmit)="newOperation()">
+        <!-- <pre>{{ operationForm.value | json }}</pre> -->
+        <label for="type">Type:</label>
+        <select name="type" id="type" [(ngModel)]="this.type">
+            <option value="0">Outcome</option>
+            <option value="1">Income</option>
+        </select>
+        <label for="concept">Concept:</label>
+        <input type="text" name="concept" [(ngModel)]="this.concept">
+        <label for="amount">Amount</label>
+        <input type="number" name="amount" [(ngModel)]="this.amount">
+        <button class="button-primary">SUBMIT</button>
+    </form>
+</div>
