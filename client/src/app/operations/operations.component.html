@@ -1,0 +1,28 @@
+
+<div class="container">
+    <div class="row">
+        <h4>All Movements</h4>
+    </div>
+    <div class="row">
+        <table>
+            <thead>
+            <tr>
+                <th>Type</th>
+                <th>Concept</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th><button class="button-primary">New</button></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let operation of this.list">
+                <td> {{ operation.type ? "income" : "outcome"}}</td>
+                <td> {{ operation.concept }} </td>
+                <td> {{ operation.createdAt | date }} </td>
+                <td> {{ operation.amount | currency }} </td>
+                <td><button>Edit</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

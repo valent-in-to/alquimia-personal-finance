@@ -1,5 +1,6 @@
 const express = require('express');
 const database = require('./database');
+const cors = require('cors');
 
 database.sync().then(()=> console.log('db running...'));
 const Operations = require('./models/Operations');
@@ -7,7 +8,7 @@ const Operations = require('./models/Operations');
 const app = express();
 app.use(express.json());
 
-app.get('/operations', async (req, res)=> {
+app.get('/operations', cors() ,async (req, res)=> {
     let operations = await Operations.findAll();
     res.send(operations)
 })
