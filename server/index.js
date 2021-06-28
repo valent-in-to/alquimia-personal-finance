@@ -26,8 +26,9 @@ app.get('/operations/:id', async (req, res) => {
 app.put('/operations/:id', async(req, res) => {
     let operation = await Operations.findByPk(req.params.id);
     operation.amount = req.body.amount;
+    operation.concept = req.body.concept;
     await operation.save();
-    res.send('updated')
+    res.status(200).send()
 })
 
 app.delete('/operations/:id', async (req, res) => {

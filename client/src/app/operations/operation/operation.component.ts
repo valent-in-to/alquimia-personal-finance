@@ -27,7 +27,7 @@ export class OperationComponent implements OnInit {
         'amount': this.amount,
         'concept': this.concept
       }
-      ).then(() => this.router.navigate([]))
+      ).then(() => this.router.navigate(['']))
   }
 
 

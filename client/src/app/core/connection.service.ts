@@ -20,5 +20,9 @@ export class ConnectionService {
   deleteOperation(id){
     return this.http.delete(environment.api + '/operations/' + id)
   }
+
+  updateOperation(operation){
+    return this.http.put(environment.api + '/operations/' + operation.id, operation)
+  }
 }
 

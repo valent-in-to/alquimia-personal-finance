@@ -1,7 +1,7 @@
 
 <div class="container">
     <div class="row">
-        <h4>All Movements</h4>
+        <h4>Balance:</h4><h4 [ngStyle]="{'color': this.balance < 0 ? 'red' : 'green'}"> {{ this.balance | currency}} </h4>
     </div>
     <div class="row">
         <table>
@@ -16,11 +16,12 @@
             </thead>
             <tbody>
             <tr *ngFor="let operation of this.list">
-                <td> {{ operation.type ? "income" : "outcome"}}</td>
+                <td *ngIf="operation.type" style="color: green;">&rarr; IN</td>
+                <td *ngIf="!operation.type" style="color: red;">&larr; OUT</td>
                 <td> {{ operation.concept }} </td>
                 <td> {{ operation.createdAt | date }} </td>
                 <td> {{ operation.amount | currency }} </td>
-                <td><button>EDIT</button></td>
+                <td><button (click)="editOperation(operation.id)">EDIT</button></td>
                 <td><button (click)="deleteOperation(operation.id)">DELETE</button></td>
             </tr>
             </tbody>

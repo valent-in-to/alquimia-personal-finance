@@ -9,6 +9,9 @@ const routes: Routes = [
   },
   {
     path: 'new', component: OperationComponent
+  },
+  {
+    path: 'edit/:id', component: OperationComponent
   }
 ];
 
