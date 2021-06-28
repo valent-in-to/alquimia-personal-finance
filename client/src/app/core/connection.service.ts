@@ -22,7 +22,6 @@ export class ConnectionService {
   }
 
   updateOperation(operation){
-    return this.http.put(environment.api + '/operations/' + operation.id, operation)
+    return this.http.put(environment.api + '/operations/' + operation.id, operation).toPromise()
   }
 }
-

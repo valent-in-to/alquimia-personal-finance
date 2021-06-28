@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from "@angular/forms";
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConnectionService } from 'src/app/core/connection.service';
+import { DataSharingService } from 'src/app/core/data-sharing.service';
 
 @Component({
   selector: 'app-operation',
@@ -10,24 +10,50 @@ import { ConnectionService } from 'src/app/core/connection.service';
 })
 export class OperationComponent implements OnInit {
 
+  id?;
   type;
   amount;
   concept;
+  updating;
 
   constructor( private connection: ConnectionService,
-    private router: Router ) { }
+    private router: Router,
+    private dataSharing: DataSharingService ) { }
 
   ngOnInit(): void {
+    let shared = this.dataSharing.getData();
+    if(shared){
+      this.id = shared.id;
+      this.concept = shared.concept;
+      this.amount = shared.amount;
+      this.type = shared.type;
+      this.updating = true;
+      this.dataSharing.reset()
+    }else{
+      this.updating = false;
+    }
   }
 
-  newOperation(){
+  newOperation(form){
     return this.connection.postNewOperation(
       {
-        'type': this.type,
-        'amount': this.amount,
-        'concept': this.concept
+        'type': form.type,
+        'amount': form.amount,
+        'concept': form.concept
       }
       ).then(() => this.router.navigate(['']))
+  }
+
+  updateOperation(form){
+    return this.connection.updateOperation(form).then(()=> this.router.navigate([]))
+  }
+
+  handleSubmit(form){
+    if(this.updating){
+      return this.updateOperation(form)
+    }else{
+      return this.newOperation(form)
+    }
   }
 
 

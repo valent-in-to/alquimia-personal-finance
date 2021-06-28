@@ -24,10 +24,10 @@ app.get('/operations/:id', async (req, res) => {
 })
 
 app.put('/operations/:id', async(req, res) => {
-    let operation = await Operations.findByPk(req.params.id);
-    operation.amount = req.body.amount;
-    operation.concept = req.body.concept;
-    await operation.save();
+    console.log(req.params.id)
+    await Operations.findByPk(req.params.id)
+    .then(op => op.update({amount: req.body.amount, concept: req.body.concept}))
+    
     res.status(200).send()
 })
 

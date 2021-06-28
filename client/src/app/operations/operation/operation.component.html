@@ -1,16 +1,22 @@
 <div class="container">
-    <h4>Add New Operation</h4>
-    <form #operationForm="ngForm" (ngSubmit)="newOperation()">
+    <h4 *ngIf="!this.updating">Add New Operation</h4>
+    <h4 *ngIf="this.updating">Edit Operation</h4>
+    
+    <form #operationForm="ngForm" (ngSubmit)="handleSubmit(operationForm.value)">
         <!-- <pre>{{ operationForm.value | json }}</pre> -->
+        <input type="number" hidden name="id" [ngModel]="this.id">
         <label for="type">Type:</label>
-        <select name="type" id="type" [(ngModel)]="this.type" required>
-            <option value="0">Outcome</option>
-            <option value="1">Income</option>
+        <select name="type" id="type" [ngModel]="this.type" required [disabled]="this.updating">
+            <option value="false">Outcome</option>
+            <option value="true">Income</option>
         </select>
+
         <label for="concept">Concept:</label>
-        <input type="text" name="concept" [(ngModel)]="this.concept" required>
+        <input type="text" name="concept" [ngModel]="this.concept" required>
+
         <label for="amount">Amount</label>
-        <input type="number" name="amount" [(ngModel)]="this.amount" required>
+        <input type="number" name="amount" [ngModel]="this.amount" required>
+
         <button routerLink='' type="button">GO BACK</button>
         <button class="button-primary">SUBMIT</button>
     </form>

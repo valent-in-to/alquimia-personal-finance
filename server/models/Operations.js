@@ -6,6 +6,11 @@ const sequelize = require('../database')
 class Operations extends Model {}
 
 Operations.init({
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
     concept: { 
         type: DataTypes.STRING 
     },

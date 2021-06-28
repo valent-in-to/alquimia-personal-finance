@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConnectionService } from '../core/connection.service';
+import { DataSharingService } from '../core/data-sharing.service';
 
 @Component({
   selector: 'app-operations',
@@ -13,7 +14,8 @@ export class OperationsComponent implements OnInit {
   balance;
 
   constructor(private con: ConnectionService,
-    private router: Router) { }
+    private router: Router,
+    private dataSharing: DataSharingService) { }
 
   ngOnInit(): void {
     this.getOperations();
@@ -42,7 +44,9 @@ export class OperationsComponent implements OnInit {
     this.getOperations()
   }
 
-  editOperation(id){
-    this.router.navigate([`/edit/${id}`])
+  editOperation(operation){
+    this.dataSharing.writeData(operation)
+    this.router.navigate([`/edit/${operation.id}`])
   }
+
 }
