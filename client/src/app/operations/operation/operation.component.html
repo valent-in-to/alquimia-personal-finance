@@ -1,6 +1,9 @@
 <div class="container">
+<div class="row">
     <h4 *ngIf="!this.updating">Add New Operation</h4>
     <h4 *ngIf="this.updating">Edit Operation</h4>
+</div>
+<div class="row">
     
     <form #operationForm="ngForm" (ngSubmit)="handleSubmit(operationForm.value)">
         <!-- <pre>{{ operationForm.value | json }}</pre> -->
@@ -17,7 +20,10 @@
         <label for="amount">Amount</label>
         <input type="number" name="amount" [ngModel]="this.amount" required>
 
-        <button routerLink='' type="button">GO BACK</button>
-        <button class="button-primary">SUBMIT</button>
+        <div class="row">
+            <button routerLink='' type="button">GO BACK</button>
+            <button class="button-primary">SUBMIT</button>
+        </div>
     </form>
+</div>
 </div>

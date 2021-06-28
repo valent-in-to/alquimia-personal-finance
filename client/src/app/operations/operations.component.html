@@ -1,9 +1,9 @@
 
 <div class="container">
-    <div class="row" style="display: flex; align-items: center; justify-content: center;">
+    <div class="row">
         <h4>Balance: </h4><h4 [ngStyle]="{'color': this.balance < 0 ? 'red' : 'green'}"> {{ this.balance | currency}} </h4>
     </div>
-    <div class="row" style="display: flex; align-items: center; justify-content: center">
+    <div class="row">
         <table>
             <thead>
             <tr>
